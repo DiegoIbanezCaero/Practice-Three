@@ -1,32 +1,40 @@
 using Microsoft.AspNetCore.Mvc;
+using PracticeThree.models;
 
 namespace PracticeThree.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+[Route("patients")]
+public class PatientsController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
+    public PatientsController()
     {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
-    {
-        _logger = logger;
+        
     }
-
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    [HttpGet]
+    public List<Patients> Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateTime.Now.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        return new List<Patients>();
+    }
+    [HttpGet]
+    [Route("{ci}")]
+    public List<Patients> GetByci([FromRoute]int ci)
+    {
+        return new List<Patients>();
+    }
+    [HttpPut]
+    public Patients Put()
+    {
+        return new Patients();
+    }
+    [HttpPost]
+    public Patients Post()
+    {
+        return new Patients();
+    }
+    [HttpDelete]
+    public Patients Detele()
+    {
+        return new Patients();
     }
 }
