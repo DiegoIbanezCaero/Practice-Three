@@ -40,6 +40,6 @@ public class PatientsController : ControllerBase
     [Route("{ci}")]
     public Patients Detele([FromRoute]int ci)
     {
-        return _PatientsManagers.Detele(ci);
+          return _PatientsManagers.Detele(ci);
     }
 }
