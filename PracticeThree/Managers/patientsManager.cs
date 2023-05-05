@@ -17,11 +17,24 @@ public class patientsManager
 
      public Patients GetByci(int ci)
     {
-        return _patients.Find(Patients => Patients.ci == ci);
+        Patients patientFound =_patients.Find(Patients => Patients.ci == ci);
+        if(patientFound==null)
+        {
+            throw new Exception("“Patient not found");
+        }
+        return patientFound;
     }
     public Patients Update(int ci,string name,string lastname)
     {
+        if(ci<0)
+        {
+            throw new Exception("CI invalido");
+        }
         Patients patientFound =_patients.Find(Patients => Patients.ci == ci);
+        if(patientFound==null)
+        {
+            throw new Exception("Patient not found");
+        }
         patientFound.name=name;
         patientFound.lastName=lastname;   
         return patientFound;
@@ -41,6 +54,10 @@ public class patientsManager
         int patientToDeleteIndex =_patients.FindIndex(Patients => Patients.ci == ci);
         Patients patientToDelete =_patients[patientToDeleteIndex];
         _patients.RemoveAt(patientToDeleteIndex);
+        if(patientToDeleteIndex==null)
+        {
+            throw new Exception("“Patient not found");
+        }
         return patientToDelete;
     }
 }
