@@ -51,10 +51,10 @@ public class patientsManager
     }
     public Patients Detele(int ci)
     {
-        int patientToDeleteIndex =_patients.FindIndex(Patients => Patients.ci == ci);
+         int patientToDeleteIndex =_patients.FindIndex(Patients => Patients.ci == ci);
         Patients patientToDelete =_patients[patientToDeleteIndex];
         _patients.RemoveAt(patientToDeleteIndex);
-        if(patientToDeleteIndex==null)
+         if(patientToDeleteIndex==null)
         {
             throw new Exception("“Patient not found");
         }
